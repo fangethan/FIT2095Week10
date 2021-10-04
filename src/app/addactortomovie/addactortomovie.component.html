@@ -1,0 +1,44 @@
+<div class="section">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birth Year</th>
+      <th>Age</th>
+      <th>Select!</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of actorsDB">
+      <td>{{item.name}}</td>
+      <td>{{item.bYear}}</td>
+      <td>{{ item.bYear | w10strsub}}</td>
+      <td><div><button type="submit" class="btn btn-primary" (click)="onSelectActor(item)">Select</button></div></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Actor</th>
+      <th>Select!</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of moviesDB">
+      <td>{{item.title}}</td>
+      <td>{{item.year}}</td>
+      <td *ngIf="item.actors.length == 0"></td>
+      <td *ngIf="item.actors.length > 0">
+        <div *ngFor="let actorItem of item.actors; let i = index">Actor {{i+1}}: {{actorItem.name}}, {{actorItem.bYear}}. </div>
+      </td>
+      <td><div><button type="submit" class="btn btn-primary" (click)="onSelectMovie(item)">Select</button></div></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button type="submit" class="btn btn-primary" (click)="onSaveExistingActor()">Add actor to Movie</button>
+</div>

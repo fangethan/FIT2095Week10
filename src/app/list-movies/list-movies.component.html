@@ -1,0 +1,21 @@
+<div class="section">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Actor</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of moviesDB">
+      <td>{{item.title}}</td>
+      <td>{{item.year}}</td>
+      <td *ngIf="item.actors.length == 0"></td>
+      <div *ngIf="item.actors.length > 0">
+        <td *ngFor="let actorItem of item.actors; let i = index">Actor {{i+1}}: {{actorItem.name}}, {{actorItem.bYear}}. </td>
+      </div>
+    </tr>
+    </tbody>
+  </table>
+</div>
